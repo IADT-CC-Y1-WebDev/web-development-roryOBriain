@@ -50,6 +50,23 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        $prodPrice1 = 10;
+        $prodPrice2 = 5;
+        $prodPrice3 = 6;
+
+        $prodQuan1 = 1;
+        $prodQuan2 = 2;
+        $prodQuan3 = 5;
+
+        $subTot1 = $prodPrice1 * $prodQuan1;
+        $subTot2 = $prodPrice2 * $prodQuan2;
+        $subTot3 = $prodPrice3 * $prodQuan3;
+
+        $totalCost = $subTot1 + $subTot2 + $subTot3;
+        $finalCost = $totalCost*0.9;
+        
+        echo "Final price is $finalCost"
         ?>
     </div>
 
@@ -65,6 +82,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $isStudent = true;
+        $hasDiscount = true;
+        $isPremiumMember = false;
+
+        echo "Is student: ". ($isStudent ? "Yes" : "No")."<br>";
+        echo "Has discount: ". ($hasDiscount ? "Yes" : "No")."<br>";
+        echo "Is premium member: ". ($isPremiumMember ? "Yes" : "No")."<br>";
         ?>
     </div>
 
