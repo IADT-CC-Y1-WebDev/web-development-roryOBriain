@@ -25,6 +25,15 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function celsiusToFahrenheit($cels) {
+            $far = ($cels * (9/5))+32;
+            echo "$far <br>";
+        } 
+
+        celsiusToFahrenheit(100);
+        
+        celsiusToFahrenheit(1);
+        celsiusToFahrenheit(42);  
         ?>
     </div>
 
@@ -41,6 +50,22 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function calculateRectangleArea($s1,$s2=""){
+            if (empty($s2)){
+                $area = $s1*$s1;
+                echo "<p>Only one side given, assuming square:";
+            }
+            else{
+                $area =$s1*$s2;
+                echo "<p>Rectangle:";
+            }
+            echo " Area is $area</p>";
+        }
+
+        calculateRectangleArea(2);
+        calculateRectangleArea(2,12);
+        calculateRectangleArea(65);
+
         ?>
     </div>
 
@@ -57,6 +82,21 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function checkEvenOdd($num){
+            if($num%2==0){
+                echo "<p>$num is even</p>";
+            }
+            else{
+                echo "<p>$num is odd</p>";
+            }
+        }
+
+        checkEvenOdd(5);
+        checkEvenOdd(52);
+        checkEvenOdd(4);
+        checkEvenOdd(-1);
+        
+        
         ?>
     </div>
 
@@ -73,6 +113,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function getArrayStats($array){
+            $min = min($array);
+            $max = max($array);
+            $avg =
+        }
         ?>
     </div>
 
