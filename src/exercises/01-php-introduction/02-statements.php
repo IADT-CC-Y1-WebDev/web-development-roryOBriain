@@ -27,6 +27,19 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $age = 13;
+        if ($age < 13){
+            echo "<p>Child.</p>";
+        }
+        else if ($age <20){
+            echo "<p>Teenager.</p>";
+        }
+        else if ($age <65){
+            echo "<p>Adult.</p>";
+        }
+        else{
+            echo "<p>Senior.</p>";
+        }
         ?>
     </div>
 
@@ -43,6 +56,39 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $day = rand(1,7);
+        switch (true){
+            case ($day <6):
+                echo "<p>Weekday</p>";
+                break;
+            default:
+                echo "<p>Weekend</p>";
+        }
+
+        switch (true){
+            case($day == 1):
+                echo "<p>Monday</p>";
+                break;
+            case($day == 2):
+                echo "<p>Tuesday</p>";
+                break;
+            case($day == 3):
+                echo "<p>Wednesday</p>";
+                break;
+            case($day == 4):
+                echo "<p>Thursday</p>";
+                break;
+            case($day == 5):
+                echo "<p>Friday</p>";
+                break;
+            case($day == 6):
+                echo "<p>Saturday</p>";
+                break;
+            case($day == 7):
+                echo "<p>Sunday</p>";
+                break;
+        
+        }
         ?>
     </div>
 
@@ -58,6 +104,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $number = 8;
+        for ($i = 0; $i < 11; $i++) {
+            $result = $number * $i;
+            echo "<p>$number X $i = $result</p>";
+        }
         ?>
     </div>
 
@@ -73,6 +124,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        $countDown = 10;
+        while($countDown>=0){
+            echo "<p>$countDown <br></p>";
+            $countDown--; 
+        }
+        echo "Blast off!"
         ?>
     </div>
 
