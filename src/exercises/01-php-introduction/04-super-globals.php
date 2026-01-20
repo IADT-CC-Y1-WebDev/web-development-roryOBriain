@@ -27,6 +27,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+
+        echo "<p> PHP_SELF:";
+        print_r($_SERVER['PHP_SELF']);
+        echo "<br>REQUEST_METHOD:";
+        print_r($_SERVER['REQUEST_METHOD']);
+        echo "<br>HTTP_HOST:";
+        print_r($_SERVER['HTTP_HOST']);
+        echo "<br>HTTP_USER_AGENT:";
+        print_r($_SERVER['HTTP_USER_AGENT']);
+        echo"</p>"
         ?>
     </div>
 
@@ -43,6 +53,15 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        if (empty($_GET["name"])==false){
+            echo "<p>Hello ";
+            print_r($_GET['name']);
+            echo "</p>";    
+        }
+        else{
+            echo "<p>Hello guest</p>";
+        }
+            
         ?>
     </div>
 
@@ -60,6 +79,23 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+         if (empty($_GET["product"])==false && empty($_GET["quantity"])==false){
+            $prod = $_GET["product"];
+            $quan = $_GET["quantity"];
+            echo "You ordered $quan $prod(s)";
+         }
+         else if(empty($_GET["product"])==True && empty($_GET["quantity"])==True){
+            echo "missing product and quantity";
+         }
+         else if(empty($_GET["product"])==True){
+            echo "missing product";
+         }
+          else if(empty($_GET["quantity"])==True){
+            echo "missing quantity";
+         }
+        else{
+            echo "ERROR";
+        }
         ?>
     </div>
 
