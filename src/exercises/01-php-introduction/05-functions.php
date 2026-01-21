@@ -53,13 +53,13 @@
         function calculateRectangleArea($s1,$s2=""){
             if (empty($s2)){
                 $area = $s1*$s1;
-                echo "<p>Only one side given, assuming square:";
+                echo "<p>Only one side given, square";
             }
             else{
                 $area =$s1*$s2;
-                echo "<p>Rectangle:";
+                echo "<p>Two sides given, rectangle";
             }
-            echo " Area is $area</p>";
+            echo " area is $area</p>";
         }
 
         calculateRectangleArea(2);
@@ -116,8 +116,16 @@
         function getArrayStats($array){
             $min = min($array);
             $max = max($array);
-            $avg =
+            $avg = (array_sum($array)/count($array));
+
+            echo "<ul> 
+            <p>Min:</p> <li>$min</li>
+            <p>Max:</p> <li>$max</li>
+            <p>Average:</p> <li>$avg</li>
+            </ul>";
         }
+
+        getArrayStats([5,10,2,3,4,5,7,9])
         ?>
     </div>
 
