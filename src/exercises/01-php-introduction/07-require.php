@@ -22,6 +22,10 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        require 'inc/navigation.php';
+        echo "<p>This is the main content</p>";
+        require 'inc/navigation.php';
+        
         ?>
     </div>
 
@@ -33,6 +37,14 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        require_once 'lib/utilities.php';
+
+        truncate('This is a really long string',19);
+        echo "<br>";
+        formatPrice(300);
+        echo "<br>";
+        getCurrentYear();
+        
         ?>
     </div>
 
@@ -44,6 +56,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        require_once 'lib/validators.php';
+        require_once 'lib/formatters.php';
+
+     
+        isValidEmail("email@email.com");
+        isValidEmail("NOT VALID AT ALL");
+        
+        echo "<br>";
+
+        formatPhoneNumber("001234567");
         ?>
     </div>
 
