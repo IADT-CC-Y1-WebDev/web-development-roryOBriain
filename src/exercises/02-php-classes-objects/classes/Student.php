@@ -10,7 +10,8 @@ class student {
         if ( empty($num)==true){
             throw new Exception("Student num cant be empty");
         }
-        
+    
+        // echo "Creating student: $name<br>";
     }
 
     public function getName(){
@@ -20,6 +21,10 @@ class student {
     public function getNumber(){
         return $this->number;
     }
-}   
 
+    public function __toString() {
+        $format = "Student: %s (%s)";
+        return sprintf($format, $this->name, $this->number);
+    }   
+}
 ?>

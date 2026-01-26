@@ -32,7 +32,9 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+        $student = new student("name1", "01");
+        $student1 = new student("name2", "02");
         ?>
     </div>
 
@@ -52,7 +54,9 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+        $student = new student("name1", "01");
+        echo "$student";
         ?>
     </div>
 
@@ -73,7 +77,14 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+        
+        $students = [$student1 = new student("name1", "01"),$student2 = new student("name2", "02"),$student3 = new student("name3", "03")];
+
+        for($i = 0; $i < count($students); $i++){
+            echo "$students[$i]<br>";
+        }
+        
         ?>
     </div>
 
