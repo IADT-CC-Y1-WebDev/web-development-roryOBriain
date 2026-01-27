@@ -21,7 +21,7 @@ class student {
     }
 
     public function __destruct() {
-        echo "Student {$this->name} has left the system <br>";
+        echo "Student {$this->name} has been destroyed <br>";
     }
 
     public function getName(){
@@ -46,6 +46,10 @@ class student {
 
     public static function findByNumber($num){
         return self::$students[$num] ?? null;
+    }
+
+    public function leave(){
+        unset(self::$students[$this->number]);
     }
 }
 ?>

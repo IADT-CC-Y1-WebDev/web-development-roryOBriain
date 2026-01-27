@@ -146,7 +146,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+        echo "number of students: " . Student::getCount() . "<br>";
+        $student1->leave();
+        unset($student1);
+        echo "number of students: " . Student::getCount() . "<br>";
         ?>
     </div>
 
