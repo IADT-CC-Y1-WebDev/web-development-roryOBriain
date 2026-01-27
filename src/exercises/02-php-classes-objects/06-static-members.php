@@ -36,7 +36,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+        $student1 = new Student("name1", "01");
+        echo Student::getCount() . "<br>";
+        $student2 = new Student("name2", "02");
+        echo Student::getCount() . "<br>";
+        $student3 = new Student("name3", "03");
+        echo Student::getCount();
         ?>
     </div>
 
@@ -71,7 +77,17 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Student.php';
+        require_once __DIR__ . '/classes/Student.php';
+
+        //students carry down from first exercise
+
+        foreach (Student::findAll() as $student) {
+            echo $student . "<br>";
+        }
+
+        echo "<br>";
+        $findStudent=1;
+        echo "Finding student $findStudent: " . Student::findByNumber("01") . "<br>";
         ?>
     </div>
 
@@ -92,8 +108,16 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
-        // require_once __DIR__ . '/classes/Postgrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Postgrad.php';
+
+        $student= new Student("name1", "01");
+        $undergrad = new Undergrad("name2", "02","course1","year1");
+        $postgrad = new Postgrad("name3", "03","supervisor1","topic1");
+
+        echo "Finding student 01: " . Student::findByNumber("01") . "<br>";
+        echo "Finding student 02: " . Student::findByNumber("02") . "<br>";
+        echo "Finding student 03: " . Student::findByNumber("03") . "<br>";
         ?>
     </div>
 
