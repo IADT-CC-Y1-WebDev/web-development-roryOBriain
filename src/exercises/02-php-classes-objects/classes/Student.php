@@ -14,6 +14,10 @@ class student {
         // echo "Creating student: $name<br>";
     }
 
+    public function __destruct() {
+        echo "Student {$this->name} has left the system <br>";
+    }
+
     public function getName(){
         return $this->name;
     }
