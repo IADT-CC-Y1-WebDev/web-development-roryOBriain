@@ -37,7 +37,11 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        $grad1=new undergrad("name1", "01","course1","year1");
+        echo "undergrad name: " . $grad1->getName();
+
         ?>
     </div>
 
@@ -58,7 +62,12 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        echo "undergrad name: " . $grad1->getName()."<br>";
+        echo "undergrad number: " . $grad1->getNumber()."<br>";
+        echo "undergrad course: " . $grad1->getCourse()."<br>";
+        echo "undergrad year: " . $grad1->getYear()."<br>";
         ?>
     </div>
 
@@ -75,7 +84,34 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+
+        $grad2=new undergrad("name2", "02","course2","year2");
+        $grad3=new undergrad("name3", "03","course3","year3");
+        $grad4=new undergrad("name4", "04","course4","year4");
+
+        echo "undergrad name: " . $grad2->getName()."<br>";
+        echo "undergrad number: " . $grad2->getNumber()."<br>";
+        echo "undergrad course: " . $grad2->getCourse()."<br>";
+        echo "undergrad year: " . $grad2->getYear()."<br>";
+        
+        echo"<br>";
+
+        echo "undergrad name: " . $grad3->getName()."<br>";
+        echo "undergrad number: " . $grad3->getNumber()."<br>";
+        echo "undergrad course: " . $grad3->getCourse()."<br>";
+        echo "undergrad year: " . $grad3->getYear()."<br>";
+
+        echo"<br>";
+
+        echo "undergrad name: " . $grad4->getName()."<br>";
+        echo "undergrad number: " . $grad4->getNumber()."<br>";
+        echo "undergrad course: " . $grad4->getCourse()."<br>";
+        echo "undergrad year: " . $grad4->getYear()."<br>";
+    
+        echo "<br>";
+        
+        $grad2 = null;
         ?>
     </div>
 
