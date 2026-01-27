@@ -32,7 +32,13 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Undergrad.php';
+        $grad1=new undergrad("gradName1", "01","course1","year1");
+        $student1 = new student("studentName1", "01");
+
+        echo $grad1;
+        echo "<br>";
+        echo $student1;
         ?>
     </div>
 
@@ -60,7 +66,9 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Postgrad.php';
+        require_once __DIR__ . '/classes/Postgrad.php';
+        $postgrad1 = new Postgrad("postgradName1", "01", "supervisor1", "topic1");
+        echo $postgrad1;
         ?>
     </div>
 
@@ -77,8 +85,19 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/Undergrad.php';
-        // require_once __DIR__ . '/classes/Postgrad.php';
+        
+        require_once __DIR__ . '/classes/Undergrad.php';
+        require_once __DIR__ . '/classes/Postgrad.php';
+
+        $array = [
+            $student = new student("name1", "01"),
+            $undergrad = new undergrad("undergradName1", "01", "course1", "year1"),
+            $postgrad = new Postgrad("postgradName1", "01", "supervisor1", "topic1")
+        ];
+
+        foreach ($array as $item) {
+            echo "$item<br>";
+        }
         ?>
     </div>
 

@@ -19,6 +19,11 @@
         return $this->year;
     }
 
+    public function __toString() {
+        $format = "Undergrad: %s (%s), %s, %s";
+        return sprintf($format, $this->name, $this->number, $this->course, $this->year);
+    }
+
     }
 
 ?>
