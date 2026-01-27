@@ -86,7 +86,7 @@
         //college\student is already being used from above. just causes errors to keep this in
         $student = new Student("student", "01");
         use College\Undergrad;
-        $undergrad = new Undergrad("undergrad", "02", "course2", "2");
+        $undergrad = new Undergrad("undergrad", "02", "course2", "year2");
         use College\Postgrad;
         $postgrad = new Postgrad("postgrad", "03", "supervisor3", "topic3");
 
