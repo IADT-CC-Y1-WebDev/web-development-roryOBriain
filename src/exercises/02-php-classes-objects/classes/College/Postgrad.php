@@ -1,7 +1,9 @@
 <?php
+
+    namespace College;
     
     require_once __DIR__ . '/Student.php';
-
+    
     class postGrad extends student {
 
         protected $supervisor;

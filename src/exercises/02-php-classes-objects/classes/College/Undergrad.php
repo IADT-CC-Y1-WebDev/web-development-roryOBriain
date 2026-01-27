@@ -1,5 +1,5 @@
 <?php
-    
+    namespace College;
     require_once __DIR__ . '/Student.php';
 
     class undergrad extends student {

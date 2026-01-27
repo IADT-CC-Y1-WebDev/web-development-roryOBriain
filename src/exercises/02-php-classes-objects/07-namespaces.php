@@ -35,9 +35,9 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/College/Student.php';
-        // $student = new \College\Student("Alice", "C12345");
-        // echo $student;
+        require_once __DIR__ . '/classes/College/Student.php';
+        $student = new \College\Student("Alice", "C12345");
+        echo $student;
         ?>
     </div>
 
@@ -54,10 +54,10 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/College/Student.php';
-        // use College\Student;
-        // $student = new Student("Bob", "C12346");
-        // echo $student;
+        require_once __DIR__ . '/classes/College/Student.php';
+        use College\Student;
+        $student = new Student("Bob", "C12346");
+        echo $student;
         ?>
     </div>
 
@@ -79,12 +79,20 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/classes/College/Student.php';
-        // require_once __DIR__ . '/classes/College/Undergrad.php';
-        // require_once __DIR__ . '/classes/College/Postgrad.php';
+        require_once __DIR__ . '/classes/College/Student.php';
+        require_once __DIR__ . '/classes/College/Undergrad.php';
+        require_once __DIR__ . '/classes/College/Postgrad.php';
         // use College\Student;
-        // use College\Undergrad;
-        // use College\Postgrad;
+        //college\student is already being used from above. just causes errors to keep this in
+        $student = new Student("student", "01");
+        use College\Undergrad;
+        $undergrad = new Undergrad("undergrad", "02", "course2", "2");
+        use College\Postgrad;
+        $postgrad = new Postgrad("postgrad", "03", "supervisor3", "topic3");
+
+        echo $student . "<br>";
+        echo $undergrad . "<br>";
+        echo $postgrad . "<br>";
         ?>
     </div>
 
