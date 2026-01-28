@@ -28,6 +28,21 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function calculateSquareRoot($number){
+            if ($number < 0) {
+                throw new Exception("Cant square root negative");
+            }
+            return sqrt($number);
+        }
+            
+        try{
+            echo "sqrt of 16 is " . calculateSquareRoot(16) . "<br>";
+            echo "sqrt of -1 is " . calculateSquareRoot(-1) . "<br>";
+        }
+        catch (Exception $e){
+            echo "ERROR: " . $e->getMessage();
+        }
+        
         ?>
     </div>
 
@@ -45,6 +60,21 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function validateEmail($email){
+            if (str_contains($email,"@")==false){
+                throw new Exception("Invalid email: missing @ symbol<br>");
+            }
+            return ("Valid email<br>");
+        }
+
+        try{
+            echo validateEmail("user@example.com");
+            echo validateEmail("invalid-email");
+            echo validateEmail("test@test.ie");
+        }
+        catch (Exception $e){
+            echo "ERROR: " . $e->getMessage();
+        }
         ?>
     </div>
 
@@ -61,6 +91,24 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        function processFile($fileName){
+            if (empty($fileName)==true){
+                throw new Exception("Invalid file: empty name<br>");
+            }
+            return("Valid file<br>");
+            
+        }
+
+        try{
+            echo processFile("file-name.example");
+            echo processFile("");
+        }
+        catch (Exception $e){
+            echo "ERROR: " . $e->getMessage();
+        }
+        finally{
+            echo "Processing complete.";
+        }
         ?>
     </div>
 
