@@ -38,16 +38,21 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // spl_autoload_register(function ($class) {
-        //     $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-        //     $file = __DIR__ . '/classes/' . $path . '.php';
-        //     if (file_exists($file)) {
-        //         require_once $file;
-        //     }
-        // });
-        // use College\Student;
-        // $student = new Student("Alice", "C12345");
-        // echo $student;
+        spl_autoload_register(function ($class) {
+            $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+            $file = __DIR__ . '/classes/' . $path . '.php';
+            if (file_exists($file)) {
+                require_once $file;
+            }
+        });
+
+        use College\Student as CollegeStudentEX1;
+        $student = new Student("name1", "01");
+        echo $student . "<br>";
+
+        use College\Postgrad as CollegePostgradEX1;
+        $postgrad = new Postgrad("name2","02","supervisor02","topic02");
+        echo $postgrad;
         ?>
     </div>
 
@@ -65,10 +70,18 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
-        // require_once __DIR__ . '/etc/config.php';
-        // use College\Student;
-        // use College\Undergrad;
-        // use College\Postgrad;
+        require_once __DIR__ . '/etc/config.php';
+        use College\Student as CollegeStudentEX2;
+        use College\Undergrad as CollegeUndergradEX2;
+        use College\Postgrad as CollegePostgradEX2;
+        // defining these classes as something else makes the deletion message show up, not a problem cus usually u dont have to doubly declare a class. just for example here
+
+        $student = new Student("name1", "01");
+        echo $student . "<br>";
+
+        $postgrad = new Postgrad("name2","02","supervisor02","topic02");
+        echo $postgrad;
+
         ?>
     </div>
 
@@ -93,6 +106,27 @@
     <div class="output">
         <?php
         // TODO: Write your solution here
+        require_once __DIR__ . '/etc/config.php';
+
+        use College\Student as CollegeStudentEX3;
+        use College\Undergrad as CollegeUndergradEX3;
+        use College\Postgrad as CollegePostgradEX3;
+
+        $student1= new Student("Student Name","0123");
+        $underGrad1= new Undergrad("Undergrad Name","0124","something","1");
+        $postGrad1= new Postgrad("Postgrad Name","0125","Supervisor Name","TopicName");
+
+        echo "<p>$student1<br>$underGrad1<br>$postGrad1</p>";
+
+        foreach (Student::findAll() as $student) {
+            echo $student . "<br>";
+        }
+        echo "<p>";
+        echo Student::findByNumber("01")."<br>";
+        echo Student::findByNumber("0125")."<br>";
+        echo Student::findByNumber("0123")."<br>";
+        echo Student::findByNumber("0124")."<br>";
+        echo "</p>";
         ?>
     </div>
 
