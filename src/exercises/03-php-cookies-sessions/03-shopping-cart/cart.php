@@ -34,10 +34,9 @@ require_once './etc/config.php';
 // TODO: Write your code here
     if (isset($_GET['remove'])){
         $id = (int)$_GET['remove'];
-        $product= Product::findById($id);
-        if ($product !== null) {
-            $cart->remove($id);
-        }
+        
+        $cart->remove($id);
+    
         header("Location: cart.php");
         exit();
     }
@@ -50,7 +49,12 @@ require_once './etc/config.php';
 // 2. Redirect back to cart.php
 // -----------------------------------------------------------------------------
 // TODO: Write your code here
-
+    if (isset($_GET['clear'])){
+            $cart->clear();
+        
+            header("Location: cart.php");
+            exit();
+        }
 // =============================================================================
 
 // =============================================================================
