@@ -30,7 +30,7 @@ try {
     // See: /examples/04-php-forms/step-01-form-submission/
     // =========================================================================
     // TODO: First, just dump the posted data to see what's submitted
-    dd($_POST);
+    // dd($_POST);
 
     // =========================================================================
     // STEP 2: Check Request Method
@@ -63,7 +63,7 @@ try {
         'cover' => $_FILES['cover'] ?? null
     ];
 
-    dd($data);
+    // dd($data);
 
     // =========================================================================
     // STEP 4: Validate Data
@@ -98,7 +98,7 @@ try {
     $uploader = new ImageUpload();
     $imageFilename = $uploader->process($_FILES['cover']);
 
-    echo "Validation successful!";
+    // echo "Validation successful!";
 
     // =========================================================================
     // STEP 9: File Uploads
@@ -123,7 +123,8 @@ try {
     // See: /examples/04-php-forms/step-10-complete/
     // =========================================================================
     // TODO: Clear form data on success (before redirect)
-
+    clearFormData();
+    clearFormErrors();
 
     // =========================================================================
     // STEP 8: Flash Messages
@@ -131,6 +132,8 @@ try {
     // =========================================================================
     // TODO: On successful registration, set a success flash message and 
     // redirect back to the form
+    setFlashMessage('success','Form validated successfully!');
+    redirect("success.php");
 }
 catch (Exception $e) {
     // =========================================================================
@@ -155,6 +158,7 @@ catch (Exception $e) {
     // See: /examples/04-php-forms/step-08-flash-messages/
     // =========================================================================
     // TODO: On validation error, you set an error flash message
+    
 
     redirect("book_create.php");
     

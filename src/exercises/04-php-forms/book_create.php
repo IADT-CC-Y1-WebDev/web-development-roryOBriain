@@ -53,6 +53,8 @@ $formats = [
     <title>Add New Book - Exercise</title>
 </head>
 <body>
+    <?php require 'inc/flash_message.php'; ?>
+    
     <div class="back-link">
         <a href="index.php">&larr; Back to Form Handling </a>
     </div>
@@ -68,7 +70,9 @@ $formats = [
     <!-- See: /examples/04-php-forms/step-08-flash-messages/                 -->
     <!-- =================================================================== -->
     <!-- TODO: Include the flash message component here                      -->
-
+    <?php 
+        setFlashMessage('error','Form validation failed');
+    ?>
 
     <!-- =================================================================== -->
     <!-- STEP 9: File Uploads                                                -->
