@@ -52,6 +52,55 @@ catch (PDOException $e) {
             // 2. Fetch all results
             // 3. Display count
             // 4. Create HTML table with the results
+
+            // try{
+            //     $db = new PDO(DB_DSN, DB_USER, DB_PASS, DB_OPTIONS);
+            //     echo "Connected using config constants!";
+            // } catch (PDOException $e) {
+            //     echo "<p class='error'>Connection failed: " . $e->getMessage() . "</p>";
+            // }
+
+            
+
+            try {
+                $stmt = $db->query("SELECT * FROM books ORDER BY title");
+                $books = $stmt->fetchAll();
+                echo "<p>Amount of books: ".count($books)."</p>";
+                
+                ?>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Release Date</th>
+                            <th>Publisher ID</th>
+                            <th>Year</th>
+                            <th>ISBN</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($books as $book): ?>
+                        <tr>
+                            <td><?= $book['id'] ?></td>
+                            <td><?= htmlspecialchars($book['title']) ?></td>
+                            <td><?= htmlspecialchars($book['author']) ?></td>
+                            <td><?= $book['publisher_id'] ?></td>
+                            <td><?= $book['year'] ?></td>
+                            <td><?= htmlspecialchars($book['isbn']) ?></td>
+                            <td><?= htmlspecialchars(substr($book['description'], 0, 50)) ?>...</td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php
+            } catch (PDOException $e) {
+                echo "<p class='error'>Connection failed: " . $e->getMessage() . "</p>";
+            }
+            
+
             ?>
         </div>
     </div>
