@@ -47,6 +47,43 @@ catch (PDOException $e) {
             // 3. Execute with new description + timestamp
             // 4. Check rowCount()
             // 5. Fetch and display updated book
+            $stmt = $db->query("SELECT * FROM books WHERE id=1");
+            $book = $stmt->fetch();
+
+            echo"<h3>UN-UPDATED BOOK:</h3>";
+            echo "<ul>";
+            foreach ($book as $col){
+                echo "<li>$col</li>";
+            }
+            echo"</ul>";
+
+            $stmt = $db-> prepare("
+                UPDATE books
+                SET description = :description
+                WHERE id= :id
+            ");
+
+            $success = $stmt->execute([
+                'description' => 'A gripping tale of racial injustice and childhood innocence in the American South. (Updated at '. date('H:i:s').")",
+                'id' => 1
+            ]);
+            
+            if ($success && $stmt->rowcount()===1){
+                echo "successfully updated";
+            }
+            else{
+                echo "failed to updated";
+            }
+
+            echo"<h3>UPDATED BOOK:</h3>";
+             $stmt = $db->query("SELECT * FROM books WHERE id=1");
+            $book = $stmt->fetch();
+
+            echo "<ul>";
+            foreach ($book as $col){
+                echo "<li>$col</li>";
+            }
+            echo"</ul>";
             ?>
         </div>
     </div>

@@ -48,6 +48,62 @@ catch (PDOException $e) {
             // 4. DELETE FROM books WHERE id = :id
             // 5. Check rowCount()
             // 6. Try to fetch the book again to verify deletion
+            
+            $stmt = $db->prepare("
+                INSERT INTO books (title, author, publisher_id, year, description)
+                VALUES (:title, :author, :publisher_id, :year, :description)
+            ");
+
+            $success = $stmt->execute([
+                
+                'title' => 'fake book',
+                'author' => 'NOT Your Name',
+                'publisher_id' => '1',
+                'year' => 2024,
+                'description' => 'A book I created for learning PDO. THE FAKE VERSION'
+            ]);
+
+            $newId = $db->lastInsertId();
+            echo "Inserted game with ID: $newId <br>";
+
+            if ($success && $stmt->rowcount()===1){
+                echo "successfully inserted 1 row";
+            }
+            else{
+                echo "failed to insert";
+            }
+
+            $stmt = $db->query("SELECT * FROM books WHERE id=$newId");
+            $book = $stmt->fetch();
+            echo "<h3>Added book:</h3>";
+            echo "<ul>";
+            foreach ($book as $col){
+                echo "<li>$col</li>";
+            }
+            echo"</ul>";
+
+            echo "<h3>Deleting book...</h3>";
+            $deleteStmt = $db->prepare("
+                DELETE FROM books WHERE id = :id
+            ");
+
+            $deleteStmt = $deleteStmt->execute([
+                'id'=>$newId
+            ]);
+
+            $stmt = $db->query("SELECT * FROM books WHERE id=$newId");
+            $book = $stmt->fetch();
+            
+            echo "new row count: ".($stmt->rowcount());
+            
+            $stmt = $db->query("SELECT * FROM books WHERE id=$newId");
+            $book = $stmt->fetch();
+            // gives error cus its selecting a book that doesnt exist
+            echo "<ul>";
+            foreach ($book as $col){
+                echo "<li>$col</li>";
+            }
+            echo"</ul>";
             ?>
         </div>
     </div>
