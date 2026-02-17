@@ -35,6 +35,29 @@ require_once __DIR__ . '/lib/config.php';
             // 3. Display the count
             // 4. Get DB::getInstance() twice and compare with ===
             // 5. Display whether they are the same instance
+            $db = DB::getInstance()->getConnection();
+
+            $stmt = $db->prepare("SELECT * FROM books ORDER BY id");
+            $stmt->execute();
+
+            $books = $stmt->fetchAll();
+            $count=0;
+            foreach($books as $book){
+                $count++;
+            }
+            echo ("there are $count books");
+
+            echo "<br>";
+
+            $db1 = DB::getInstance();
+            $db2 = DB::getInstance();
+
+            if ($db1 === $db2){
+                echo ("same instance !");
+            }
+            else{
+                echo ("not singleton !");
+            }
             ?>
         </div>
     </div>
