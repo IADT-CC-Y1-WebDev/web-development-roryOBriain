@@ -41,11 +41,9 @@ require_once __DIR__ . '/lib/config.php';
             $stmt->execute();
 
             $books = $stmt->fetchAll();
-            $count=0;
-            foreach($books as $book){
-                $count++;
-            }
-            echo ("there are $count books");
+    
+            
+            echo ("there are "). count($books). (" books");
 
             echo "<br>";
 
