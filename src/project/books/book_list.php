@@ -1,42 +1,54 @@
-<?php
-    require_once 'php/lib/config.php';
-    $db = DB::getInstance()->getConnection();
-    Book::findAll();
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <?php include 'php/inc/head_content.php'; ?>
+        <title>Games</title>
+    </head>
+    
+   <?php
+require_once 'php/lib/config.php';
+require_once 'php/lib/utils.php';
 
-    try {
-        $stmt = $db->query("SELECT * FROM books ORDER BY id");
-        $books = $stmt->fetchAll();
-        echo "<p>Amount of books: ".count($books)."</p>";
-        ?>
-                
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Publisher ID</th>
-                    <th>Year</th>
-                    <th>ISBN</th>
-                    <th>Description</th>
-                </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($books as $book): ?>
-                        <tr>
-                            <td><?= $book['id']?></td>
-                            <td><?= htmlspecialchars($book['title'] ?? "missing data") ?></td>
-                            <td><?= htmlspecialchars($book['author'] ?? "missing data") ?></td>
-                            <td><?= $book['publisher_id'] ?? "missing data"?></td>
-                            <td><?= $book['year'] ?? "missing data" ?></td>
-                            <td><?= htmlspecialchars($book['isbn']  ?? "missing data") ?></td>
-                            <td><?= htmlspecialchars(substr($book['description'], 0, 50) ?? "missing data") ?>...</td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <?php
-            } catch (PDOException $e) {
-                echo "<p class='error'>Connection failed: " . $e->getMessage() . "</p>";
-            }
+
+try {
+    $books = Book::findAll();
+    $publishers = Publisher::findAll();
+    $formats = Format::findAll();
+}
+catch (PDOException $e) {
+    die("<p>PDO Exception: " . $e->getMessage() . "</p>");
+}
 ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <?php include 'php/inc/head_content.php'; ?>
+        <title>Books</title>
+    </head>
+    <body>
+        <div class="container">
+            <?php if (empty($books)) { ?>
+                <p>No books found.</p>
+            <?php } else { ?>
+                <div class="width-12 cards">
+                    <?php foreach ($books as $book) { ?>
+                        <div class="card">
+                            <div class="top-content">
+                                <h2>Title: <?= h($book->title) ?></h2>
+                                <p>Release Year: <?= h($book->year) ?></p>
+                            </div>
+                            <div class="bottom-content">
+                                <img src="images/<?= h($book->cover_filename) ?>" alt="Image for <?= h($book->title) ?>" />
+                                <div class="actions">
+                                    <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
+                                    <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
+                                    <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+        </div>
+    </body>
+</html>

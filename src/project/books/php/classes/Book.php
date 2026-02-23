@@ -70,6 +70,7 @@ class Book
         return $books;
     }
 
+    // this works for saving and updating. basically the same thing
     public function save()
     {
         if($this->id){
