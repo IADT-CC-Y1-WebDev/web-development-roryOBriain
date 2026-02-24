@@ -19,9 +19,14 @@ catch (PDOException $e) {
     </head>
     <body>
         <div class="container">
-            <a href="book_create.php">Create New Book</a>
-        </div>
-        <div class="container">
+
+            <div class="width-12 header">
+                    <?php require 'php/inc/flash_message.php'; ?>
+                    <div class="button">
+                        <a href="book_create.php">Add New Book</a>
+                    </div>
+            </div>
+            
             <?php if (empty($books)) { ?>
                 <p>No books found.</p>
             <?php } else { ?>
