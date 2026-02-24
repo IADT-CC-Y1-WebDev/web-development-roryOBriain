@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <?php include 'php/inc/head_content.php'; ?>
-        <title>Games</title>
-    </head>
-    
-   <?php
+<?php
 require_once 'php/lib/config.php';
 require_once 'php/lib/utils.php';
-
 
 try {
     $books = Book::findAll();

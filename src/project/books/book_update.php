@@ -17,7 +17,8 @@ try {
         throw new Exception('Invalid request method.');
     }
 
-   $data = [
+    // Get form data
+    $data = [
         'id' => $_POST['id'] ?? null,
         'title' => $_POST['title'] ?? null,
         'author' => $_POST['author'] ?? null,
@@ -39,9 +40,8 @@ try {
         'isbn' => 'required|notempty|min:13|max:13',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
-        'cover_filename' => 'file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
+        'cover_filename' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
-
 
     // Validate all data (including file)
     $validator = new Validator($data, $rules);
@@ -67,7 +67,7 @@ try {
         throw new Exception('Selected publisher does not exist.');
     }
 
-    // Verify format exist
+    // Verify formats exist
     foreach ($data['format_ids'] as $formatId) {
         if (!Format::findById($formatId)) {
             throw new Exception('One or more selected formats do not exist.');
@@ -75,15 +75,15 @@ try {
     }
 
     // Process the uploaded image (validation already completed)
-    $coverFilename = null;
+    $imageFilename = null;
     $uploader = new ImageUpload();
     if ($uploader->hasFile('cover_filename')) {
         // Delete old image
         $uploader->deleteImage($book->cover_filename);
         // Process new image
-        $coverFilename = $uploader->process($_FILES['cover_filename']);
+        $imageFilename = $uploader->process($_FILES['cover_filename']);
         // Check for processing errors
-        if (!$coverFilename) {
+        if (!$imageFilename) {
             throw new Exception('Failed to process and save the image.');
         }
     }
@@ -91,12 +91,13 @@ try {
     // Update the book instance
     $book->title = $data['title'];
     $book->author = $data['author'];
-    $book->publisher_id = $data['publisher_id'];
     $book->year = $data['year'];
+    $book->publisher_id = $data['publisher_id'];
     $book->isbn = $data['isbn'];
     $book->description = $data['description'];
-    if ($coverFilename) {
-        $book->cover_filename = $coverFilename;
+    $book->format_ids = $data['format_ids'];
+    if ($imageFilename) {
+        $book->cover_filename = $imageFilename;
     }
 
     // Save to database
@@ -117,15 +118,15 @@ try {
     clearFormErrors();
 
     // Set success flash message
-    setFlashMessage('success', 'Game updated successfully.');
+    setFlashMessage('success', 'Book updated successfully.');
 
-    // Redirect to game details page
+    // Redirect to book details page
     redirect('book_view.php?id=' . $book->id);
 }
 catch (Exception $e) {
     // Error - clean up uploaded image
-    if ($coverFilename) {
-        $uploader->deleteImage($coverFilename);
+    if ($imageFilename) {
+        $uploader->deleteImage($imageFilename);
     }
 
     // Set error flash message

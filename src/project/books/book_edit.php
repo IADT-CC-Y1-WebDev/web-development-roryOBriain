@@ -32,7 +32,6 @@ try {
 catch (PDOException $e) {
     setFlashMessage('error', 'Error: ' . $e->getMessage());
     redirect('/index.php');
-
 }
 ?>
 <!DOCTYPE html>
@@ -50,7 +49,7 @@ catch (PDOException $e) {
                 <h1>Edit Book</h1>
             </div>
             <div class="width-12">
-                <form action="book_store.php" method="POST" enctype="multipart/form-data">
+                <form action="book_update.php" method="POST" enctype="multipart/form-data">
                     <div class="input">
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
