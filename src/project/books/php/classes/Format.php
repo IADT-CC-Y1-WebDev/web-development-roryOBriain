@@ -3,7 +3,6 @@
 class Format {
     public $id;
     public $name;
-    public $format_type;
 
     private $db;
 
@@ -13,7 +12,6 @@ class Format {
         if (!empty($data)) {
             $this->id = $data['id'] ?? null;
             $this->name = $data['name'] ?? null;
-            $this->format_type = $data['format_type'] ?? null;
         }
     }
 
@@ -45,17 +43,17 @@ class Format {
         return null;
     }
 
-    // Find formats by game (requires JOIN with game_format table)
-    public static function findByGame($gameId) {
+    // Find formats by book (requires JOIN with book_format table)
+    public static function findByBook($bookId) {
         $db = DB::getInstance()->getConnection();
         $stmt = $db->prepare("
             SELECT f.*
             FROM formats f
-            INNER JOIN game_format gf ON f.id = gf.format_id
-            WHERE gf.game_id = :game_id
+            INNER JOIN book_format bf ON f.id = bf.format_id
+            WHERE bf.book_id = :book_id
             ORDER BY f.name
         ");
-        $stmt->execute(['game_id' => $gameId]);
+        $stmt->execute(['book_id' => $bookId]);
 
         $formats = [];
         while ($row = $stmt->fetch()) {
@@ -69,8 +67,7 @@ class Format {
     public function toArray() {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'format_type' => $this->format_type
+            'name' => $this->name
         ];
     }
 }

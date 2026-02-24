@@ -3,7 +3,6 @@
 class Publisher {
     public $id;
     public $name;
-    public $description;
 
     private $db;
 
@@ -13,7 +12,6 @@ class Publisher {
         if (!empty($data)) {
             $this->id = $data['id'] ?? null;
             $this->name = $data['name'] ?? null;
-            $this->description = $data['description'] ?? null;
         }
     }
 
@@ -48,7 +46,6 @@ class Publisher {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description
         ];
     }
 }

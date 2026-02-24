@@ -59,10 +59,11 @@ catch (PDOException $e) {
                         </div>
                     </div>
                     <div class="input">
-                        <label class="special" for="release_year">Release Year:</label>
+                        <label class="special" for="year">Release Year:</label>
                         <div>
-                            <input type="year" id="release_year" name="release_year" value="<?= old('release_year') ?>" required>
-                            <p><?= error('release_year') ?></p>
+                            
+                            <input type="number" id="year" name="year" min="1900" max="2099" step="1" value="<?= old('year') ?>" required>
+                            <p><?= error('year') ?></p>
                         </div>
                     </div>
                     <div class="input">
@@ -97,10 +98,10 @@ catch (PDOException $e) {
                         <p><?= error('format_ids') ?></p>
                     </div>
                     <div class="input">
-                        <label class="special" for="image">Image (required):</label>
+                        <label class="special" for="cover_filename">Image (required):</label>
                         <div>
-                            <input type="file" id="image" name="image" accept="image/*" required>
-                            <p><?= error('image') ?></p>
+                            <input type="file" id="cover_filename" name="cover_filename" accept="image/*" required>
+                            <p><?= error('cover_filename') ?></p>
                         </div>
                     </div>
                     <div class="input">

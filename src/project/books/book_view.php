@@ -13,9 +13,9 @@ try {
         die("<p>Error: book not found.</p> <a href='book_list.php'>Back to list</a>");
     }
 
-    $publisher = Publisher::findById($book->publisher_id)->toArray();;
+    $publisher = Publisher::findById($book->publisher_id)->toArray();
 
-    // $platforms = Platform::findByGame($book->id);
+    $formats = Format::findByBook($book->id);    
 
     // $platformNames = [];
     // foreach ($platforms as $platform) {
@@ -59,7 +59,8 @@ catch (PDOException $e) {
                         <p>Release Year: <?= htmlspecialchars($book->year ?? "data missing") ?></p>
                         <p>ISBN: <?= htmlspecialchars($book->isbn ?? "data missing") ?> </p>
                         <p>Description:<br /><?= nl2br(htmlspecialchars($book->description ?? "data missing")) ?></p>
-                       
+                        <p>Formats: <?= htmlspecialchars(implode(", ", array_map(fn($f) => $f->name, $formats))) ?? "data missing" ?> </p>
+
                     </div>
                 </div>
             </div>

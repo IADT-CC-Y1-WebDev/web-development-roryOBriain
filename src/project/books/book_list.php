@@ -27,6 +27,9 @@ catch (PDOException $e) {
     </head>
     <body>
         <div class="container">
+            <a href="book_create.php">Create New Book</a>
+        </div>
+        <div class="container">
             <?php if (empty($books)) { ?>
                 <p>No books found.</p>
             <?php } else { ?>

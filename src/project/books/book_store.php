@@ -22,22 +22,23 @@ try {
         'title' => $_POST['title'] ?? null,
         'author' => $_POST['author'] ?? null,
         'publisher_id' => $_POST['publisher_id'] ?? null,
-        'release_year' => $_POST['release_year'] ?? null,
+        'year' => $_POST['year'] ?? null,
         'isbn' => $_POST['isbn'] ?? null,
         'description' => $_POST['description'] ?? null,
         'format_ids' => $_POST['format_ids'] ?? [],
-        'image' => $_FILES['image'] ?? null
+        'cover_filename' => $_FILES['cover_filename'] ?? null
     ];
 
     // Define validation rules
     $rules = [
         'title' => 'required|notempty|min:1|max:255',
         'author' => 'required|notempty|min:1|max:255',
-        'release_year' => 'required|notempty',
+        'year' => 'required|notempty',
         'publisher_id' => 'required|integer',
+        'isbn' => 'required|notempty|min:13|max:13',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
-        'image' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
+        'cover_filename' => 'required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
 
     // Validate all data (including file)
@@ -61,7 +62,7 @@ try {
 
     // Process the uploaded image (validation already completed)
     $uploader = new ImageUpload();
-    $imageFilename = $uploader->process($_FILES['image']);
+    $imageFilename = $uploader->process($_FILES['cover_filename']);
 
     if (!$imageFilename) {
         throw new Exception('Failed to process and save the image.');
@@ -72,10 +73,10 @@ try {
     $book->title = $data['title'];
     $book->author = $data['author'];
     $book->isbn = $data['isbn'];
-    $book->release_year = $data['release_year'];
+    $book->year = $data['year'];
     $book->publisher_id = $data['publisher_id'];
     $book->description = $data['description'];
-    $book->image_filename = $imageFilename;
+    $book->cover_filename = $imageFilename;
 
     // Save to database
     $book->save();
@@ -84,7 +85,7 @@ try {
         foreach ($data['format_ids'] as $formatId) {
             // Verify format exists before creating relationship
             if (Format::findById($formatId)) {
-                Format::create($book->id, $formatId);
+                BookFormat::create($book->id, $formatId);
             }
         }
     }
