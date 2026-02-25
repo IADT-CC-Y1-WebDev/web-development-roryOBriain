@@ -20,11 +20,21 @@ catch (PDOException $e) {
     <body>
         <div class="container">
 
+            <div class="width-12 welcome">
+                <div class="button">
+                    <a href="index.php">Back to index</a>
+                </div>
+
+                <h1>Welcome to Book List</h1>
+                
+                <div class="blank"></div>
+            </div>
+            
             <div class="width-12 header">
-                    <?php require 'php/inc/flash_message.php'; ?>
-                    <div class="button">
-                        <a href="book_create.php">Add New Book</a>
-                    </div>
+                <?php require 'php/inc/flash_message.php'; ?>
+                <div class="button">
+                    <a href="book_create.php">Add New Book</a>
+                </div>
             </div>
             
             <?php if (empty($books)) { ?>

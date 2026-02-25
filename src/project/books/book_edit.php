@@ -83,7 +83,7 @@ catch (PDOException $e) {
                     <div class="input">
                         <label class="special" for="year">Release Year:</label>
                         <div>
-                            <input type="number" id="year" name="year" min="1900" max="2099" step="1" value="<?= old('year', $book->year) ?>" required>
+                            <input type="number" id="year" name="year" min="1700" max="2099" step="1" value="<?= old('year', $book->year) ?>" required>
                             <p><?= error('year') ?></p>
                         </div>
                     </div>
@@ -128,7 +128,7 @@ catch (PDOException $e) {
                     </div>
                     <div class="input">
                         <button  class="button" type="submit">Update Book</button>
-                        <div class="button"><a href="index.php">Cancel</a></div>
+                        <div class="button"><a href="book_list.php">Cancel</a></div>
                     </div>
                 </form>
             </div>

@@ -58,7 +58,7 @@ body {
 	margin-bottom: 10px;
 	object-fit: cover;
 	border: 1px solid #7c75f1;
-	height: 340px;
+	height: 370px;
 }
 
 .filters {
@@ -190,3 +190,13 @@ form {
 	color: #252525;
 	font-weight: 900;
 }
+
+.welcome{
+	display: flex;
+	align-items: baseline;	
+	justify-content:space-between
+}
+.blank{
+	width: 100px;;
+}
+
