@@ -19,7 +19,6 @@ catch (PDOException $e) {
     </head>
     <body>
         <div class="container">
-
             <div class="width-12 welcome">
                 <div class="button">
                     <a href="index.php">Back to index</a>
@@ -36,7 +35,7 @@ catch (PDOException $e) {
                     <a href="book_create.php">Add New Book</a>
                 </div>
             </div>
-            
+        
             <?php if (empty($books)) { ?>
                 <p>No books found.</p>
             <?php } else { ?>
@@ -48,11 +47,12 @@ catch (PDOException $e) {
                                 <p>Release Year: <?= h($book->year) ?></p>
                             </div>
                             <div class="bottom-content">
+                                <div class="blank"></div>
                                 <img src="images/<?= h($book->cover_filename) ?>" alt="Image for <?= h($book->title) ?>" />
                                 <div class="actions">
                                     <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
                                     <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
-                                    <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
+                                    <a id="confirmMe" href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -60,5 +60,6 @@ catch (PDOException $e) {
                 </div>
             <?php } ?>
         </div>
+        <script src="js/confirm.js"></script>
     </body>
 </html>

@@ -17,14 +17,14 @@ try {
 
     $formats = Format::findByBook($book->id);    
 
-    // $platformNames = [];
-    // foreach ($platforms as $platform) {
-    //     $platformNames[] = htmlspecialchars($platform->name);
-    // }
+    $formatsNames = [];
+    foreach ($formats as $format) {
+        $formatsNames[] = htmlspecialchars($format->name);
+    }
 } 
 catch (PDOException $e) {
-    // setFlashMessage('error', 'Error: ' . $e->getMessage());
-    // redirect('/index.php');
+    setFlashMessage('error', 'Error: ' . $e->getMessage());
+    redirect('/index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -59,7 +59,7 @@ catch (PDOException $e) {
                         <p>Release Year: <?= htmlspecialchars($book->year ?? "data missing") ?></p>
                         <p>ISBN: <?= htmlspecialchars($book->isbn ?? "data missing") ?> </p>
                         <p>Description:<br /><?= nl2br(htmlspecialchars($book->description ?? "data missing")) ?></p>
-                        <p>Formats: <?= htmlspecialchars(implode(", ", array_map(fn($f) => $f->name, $formats))) ?? "data missing" ?> </p>
+                        <p>Formats: <?= htmlspecialchars(implode(", ",$formatsNames)) ?? "data missing" ?> </p>
 
                     </div>
                 </div>
