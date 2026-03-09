@@ -34,7 +34,7 @@
             <a href="book_create.php">Add Book</a>
         </div>
         <div class="topic">
-            <h3>Book CRUD Application</h2>
+            <h3>Book CRUD Application</h3>
             <p>This application is a CRUD (Create Read Update Delete) application that uses php to access an SQL database.</p>
             <p>The links above lead to the application, thank you for reading :-)</p>
         </div>
