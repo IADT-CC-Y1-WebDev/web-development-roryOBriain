@@ -122,7 +122,7 @@ if ($spiceLevel === 'extra_hot' || $spiceLevel === 'hot') {
     <!-- Results -->
     <div class="results-box">
         <h2>Your Food Recommendations</h2>
-        <p>Based on your preference for <strong><?= ucfirst($cuisine) ?></strong> cuisine with a <strong><?= ucfirst($spiceLevel) ?></strong> spice level:</p>
+        <p>Based on your preference for <strong><?= ucfirst($cuisine) ?></strong> cuisine with <strong><?= ucfirst(str_replace('_', ' ', $spiceLevel)) ?></strong> spice level:</p>
         <ul style="list-style: none; padding: 0;">
             <?php foreach ($recommendation as $food): ?>
                 <li style="padding: 0.5rem 0; font-size: 1.1rem;"><?= htmlspecialchars($food) ?></li>
