@@ -77,7 +77,9 @@ $sessionTheme = isset($_SESSION['theme']) ? $_SESSION['theme'] : 'not set';
 
 // Available themes with their colors
 $themes = [
+    'not set' => ['bg' => '', 'text' => ''],
     'light' => ['bg' => '#ffffff', 'text' => '#333333'],
+    
     'dark' => ['bg' => '#1a1a2e', 'text' => '#eaeaea'],
     'blue' => ['bg' => '#e3f2fd', 'text' => '#1565c0'],
     'green' => ['bg' => '#e8f5e9', 'text' => '#2e7d32'],

@@ -6,12 +6,17 @@
 // =============================================================================
 
 // TODO Exercise 1: Start the session
-
+    if(session_status()=== PHP_SESSION_NONE){
+        session_start();
+    }
 
 // TODO Exercise 2: Redirect to step 1 if quiz not started or not complete
 // Check if $_SESSION['food_quiz'] exists AND 'completed_at' is set
 // If not, redirect to step1.php
-
+if (!isset($_SESSION['food_quiz'])) {
+    header('Location: step1.php');
+    exit;
+}
 
 // Get quiz data (this is provided, but depends on your session being set up correctly)
 $answers = isset($_SESSION['food_quiz']['answers']) ? $_SESSION['food_quiz']['answers'] : [];
@@ -26,8 +31,22 @@ $recommendations = [
     'american' => ['Burger', 'BBQ Ribs', 'Apple Pie'],
 ];
 
+$recommendationsSpicy =[
+    'italian' => ['Spicy Arrabbiata Pasta', 'Spicy Sausage Pizza'],
+    'mexican' => ['Spicy Chicken Tacos', 'Spicy Beef Enchiladas'],
+    'asian' => ['Spicy Szechuan Noodles', 'Spicy Ramen'],
+    'american' => ['Spicy Buffalo Wings', 'Spicy Jalapeno Burger'],
+];
+
 $cuisine = isset($answers['cuisine']) ? $answers['cuisine'] : 'italian';
 $recommendation = isset($recommendations[$cuisine]) ? $recommendations[$cuisine] : $recommendations['italian'];
+
+$spiceLevel = isset($answers['spice_level']) ? $answers['spice_level'] : 'mild';
+
+if ($spiceLevel === 'extra_hot' || $spiceLevel === 'hot') {
+    $recommendation = isset($recommendationsSpicy[$cuisine]) ? $recommendationsSpicy[$cuisine] : $recommendationsSpicy['italian'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +122,7 @@ $recommendation = isset($recommendations[$cuisine]) ? $recommendations[$cuisine]
     <!-- Results -->
     <div class="results-box">
         <h2>Your Food Recommendations</h2>
-        <p>Based on your preference for <strong><?= ucfirst($cuisine) ?></strong> cuisine:</p>
+        <p>Based on your preference for <strong><?= ucfirst($cuisine) ?></strong> cuisine with <strong><?= ucfirst(str_replace('_', ' ', $spiceLevel)) ?></strong> spice level:</p>
         <ul style="list-style: none; padding: 0;">
             <?php foreach ($recommendation as $food): ?>
                 <li style="padding: 0.5rem 0; font-size: 1.1rem;"><?= htmlspecialchars($food) ?></li>
