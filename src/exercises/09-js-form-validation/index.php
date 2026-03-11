@@ -28,9 +28,13 @@
     </ul>
 
     <h2 id="exercise-1">Exercise 09-1: Standalone books form validation</h2>
+
+    <a href="01-contact.php">( link to exercise )</a>
+    
     <p>Create a page in the <code>exercises/09-js-form-validation/</code> folder, for example:</p>
     <pre><code>exercises/09-js-form-validation/books-form.php</code></pre>
     <p>On that page, build a form that matches the book create fields from your Books project. Use the same form-handling pattern as the <a href="/examples/09-js-form-validation/01-contact.php">contact example</a> and <a href="/examples/09-js-form-validation/02-games-form.php">games form example</a>.</p>
+    
     <ul>
         <li>Build an HTML form for a book with fields:
             <code>title</code>, <code>author</code>, <code>year</code>, <code>isbn</code>, and <code>description</code>.
