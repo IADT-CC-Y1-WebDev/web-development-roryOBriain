@@ -32,13 +32,13 @@ try {
     // Define validation rules
     $rules = [
         'title' => 'required|notempty|min:1|max:255',
-        'author' => 'required|notempty|min:1|max:255',
+        'author' => 'required|notempty|min:5|max:255',
         'year' => 'required|notempty',
         'publisher_id' => 'required|integer',
         'isbn' => 'required|notempty|min:13|max:15',
         'description' => 'required|notempty|min:10|max:5000',
         'format_ids' => 'required|array|min:1|max:10',
-        'cover_filename' => 'notempty|required|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
+        'cover_filename' => 'required|notempty|file|image|mimes:jpg,jpeg,png|max_file_size:5242880'
     ];
 
     // Validate all data (including file)

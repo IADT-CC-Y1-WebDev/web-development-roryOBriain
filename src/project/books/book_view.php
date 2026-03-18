@@ -47,7 +47,7 @@ catch (PDOException $e) {
 
                         <div class="actions">
                             <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a> /
-                            <a href="book_delete.php?id=<?= h($book->id) ?>">Delete</a> /
+                            <a id ="deleteLink" href="book_delete.php?id=<?= h($book->id) ?>">Delete</a> /
                             <a href="book_list.php">Back</a>
                         </div>
                     </div>
@@ -65,5 +65,6 @@ catch (PDOException $e) {
                 </div>
             </div>
         </div>
+        <script src="js/confirm.js"></script>
     </body>
 </html>
