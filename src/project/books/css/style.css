@@ -248,5 +248,8 @@ li{
 	list-style-type: disc;
 }
 .card.hidden {
-            display: none;
-        }
+    display: none;
+}
+button,select,input[type="checkbox"]{
+	cursor: pointer;
+}

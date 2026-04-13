@@ -48,8 +48,9 @@ catch (PDOException $e) {
             <div class="width-12">
                 <h1>Edit Book</h1>
             </div>
+            <div id="error_summary_top" class="error-summary width-12" style="display:none" role="alert"></div>
             <div class="width-12">
-                <form action="book_update.php" method="POST" enctype="multipart/form-data" novalidate>
+                <form id="book_form" action="book_update.php" method="POST" enctype="multipart/form-data" novalidate>
                     <div class="input">
                         <input type="hidden" name="id" value="<?= h($book->id) ?>">
                     </div>
@@ -129,13 +130,13 @@ catch (PDOException $e) {
                         <label class="special" for="cover_filename">Image (optional):</label>
                         <div><img src="images/<?= $book->cover_filename ?>" /></div>
                         <div>
-                            <input type="file" id="cover_filename" name="cover_filename" accept="image/*">
+                            <input type="file" id="cover_filename" name="cover_filename" accept="image/*" data-optional="true">
                             <p><?= error('cover_filename') ?></p>
                             <p id="cover_filename_error"></p>
                         </div>
                     </div>
                     <div class="input">
-                        <button  class="button" type="submit">Update Book</button>
+                        <button id="submit_btn" class="button" type="submit">Update Book</button>
                         <div class="button"><a href="book_list.php">Cancel</a></div>
                     </div>
                 </form>

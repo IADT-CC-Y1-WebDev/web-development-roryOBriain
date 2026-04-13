@@ -8,6 +8,11 @@ let cardsContainer = document.getElementById('book_cards');
 
 let form = document.getElementById('filters');
 
+form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    applyFilters();
+});
+
 applyBtn.addEventListener('click',(evt) =>{
     evt.preventDefault();
     applyFilters();

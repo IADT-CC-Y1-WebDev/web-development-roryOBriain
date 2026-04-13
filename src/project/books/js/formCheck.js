@@ -180,7 +180,9 @@ function onSubmitForm(evt) {
 
     // cover_filename
     if (!coverFilenameInput.files || coverFilenameInput.files.length === 0) {
-        addError('cover_filename', 'Cover image is required.');
+        if (coverFilenameInput.dataset.optional !== 'true') {
+            addError('cover_filename', 'Cover image is required.');
+        }
     }
 
     showErrorSummaryTop();
