@@ -29,21 +29,55 @@ catch (PDOException $e) {
 
                 <h1>Welcome to Book List</h1>
                 
-                <div class="blank"></div>
-            </div>
-            
-            <div class="width-12 header">
                 <div class="button">
                     <a href="book_create.php">Add New Book</a>
                 </div>
             </div>
-        
+            <div class="width-12 filters">
+                    <form id="filters">
+                        <div>
+                            <label for="title_filter">Title:</label>
+                            <input type="text" id="title_filter" name="title_filter">
+                        </div>
+                        <div>
+                            <label for="publisher_filter">Publisher:</label>
+                            <select id="publisher_filter" name="publisher_filter">
+                                <option value="">All Publishers</option>
+                                <?php foreach ($publishers as $publisher) { ?>
+                                    <option value="<?= h($publisher->id) ?>"><?= h($publisher->name) ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="format_filter">Formats:</label>
+                            <select id="format_filter" name="format_filter">
+                                <option value="">All Formats</option>
+                                <?php foreach ($formats as $format) { ?>
+                                    <option value="<?= h($format->id) ?>"><?= h($format->name) ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" id="apply_filters">Apply Filters</button>
+                            <button type="button" id="clear_filters">Clear Filters</button>
+                        </div>
+                    </form>
+                </div>
+            
             <?php if (empty($books)) { ?>
                 <p>No books found.</p>
             <?php } else { ?>
-                <div class="width-12 cards">
-                    <?php foreach ($books as $book) { ?>
-                        <div class="card">
+                <div class="width-12 cards" id="book_cards">
+                    <?php foreach ($books as $book) { 
+                        $publisher = Publisher::findById($book->publisher_id);
+
+                        $formats = Format::findByBook($book->id);   ?>
+
+                        <div class="card" 
+                            data-title="<?= h($book->title) ?>"
+                            data-publisher="<?= h($publisher->id) ?>"
+                            data-formats="<?= h(implode(', ', array_column($formats, 'id'))) ?>">
+
                             <div class="top-content">
                                 <h2>Title: <?= h($book->title) ?></h2>
                                 <p>Release Year: <?= h($book->year) ?></p>
@@ -63,5 +97,6 @@ catch (PDOException $e) {
             <?php } ?>
         </div>
         <script src="js/confirm.js"></script>
+        <script src="js/filters.js"></script>
     </body>
 </html>

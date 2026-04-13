@@ -247,3 +247,6 @@ ul{
 li{
 	list-style-type: disc;
 }
+.card.hidden {
+            display: none;
+        }
