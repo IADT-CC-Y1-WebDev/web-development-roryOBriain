@@ -6,9 +6,6 @@ require_once 'php/lib/utils.php';
 
 startSession();
 
-$imageFilename = null;
-$uploader = new ImageUpload();
-
 try {
     // Initialize form data array
     $data = [];

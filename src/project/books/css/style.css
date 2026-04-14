@@ -164,7 +164,11 @@ body {
 	
 }
 
-form {
+#book_form {
+	background-color: #f4f4f4;
+	padding: 16px;
+	border-radius: 7px;
+	border: 1px solid #bcbcbc;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
@@ -253,3 +257,4 @@ li{
 button,select,input[type="checkbox"]{
 	cursor: pointer;
 }
+

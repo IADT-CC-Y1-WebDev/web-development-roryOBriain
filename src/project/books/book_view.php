@@ -40,14 +40,14 @@ catch (PDOException $e) {
             </div>
         </div>
         <div class="container">
-            <div class="width-12">
+            <div class="width-12 delete">
                 <div class="hCard">
                     <div class="bottom-content">
                         <img src="images/<?= htmlspecialchars($book->cover_filename) ?>" />
 
                         <div class="actions">
                             <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a> /
-                            <a id ="deleteLink" href="book_delete.php?id=<?= h($book->id) ?>">Delete</a> /
+                            <a class="deleteLink" href="book_delete.php?id=<?= h($book->id) ?>">Delete</a> /
                             <a href="book_list.php">Back</a>
                         </div>
                     </div>

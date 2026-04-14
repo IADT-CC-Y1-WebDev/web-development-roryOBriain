@@ -115,8 +115,9 @@ class Book
 
         $status = $stmt->execute($params);
 
+        // this was causing me a headache. thought it was a problem w. image uploading but it was just this check
         if (!$status || $stmt->rowCount() !== 1) {
-            throw new Exception("Failed to save book.");
+            throw new Exception("Failed to save book, no changes made");
         }
 
         if ($this->id === null) {

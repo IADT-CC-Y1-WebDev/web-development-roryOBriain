@@ -67,7 +67,7 @@ catch (PDOException $e) {
             <?php if (empty($books)) { ?>
                 <p>No books found.</p>
             <?php } else { ?>
-                <div class="width-12 cards" id="book_cards">
+                <div class="width-12 cards delete" id="book_cards">
                     <?php foreach ($books as $book) { 
                         $publisher = Publisher::findById($book->publisher_id);
 
@@ -88,7 +88,7 @@ catch (PDOException $e) {
                                 <div class="actions">
                                     <a href="book_view.php?id=<?= h($book->id) ?>">View</a>/ 
                                     <a href="book_edit.php?id=<?= h($book->id) ?>">Edit</a>/ 
-                                    <a id="deleteLink" href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
+                                    <a class="deleteLink" href="book_delete.php?id=<?= h($book->id) ?>">Delete</a>
                                 </div>
                             </div>
                         </div>
