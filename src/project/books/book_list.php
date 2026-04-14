@@ -19,7 +19,7 @@ catch (PDOException $e) {
     </head>
     <body>
         <div class="container">
-            <div class="width-12 header">
+            <div class="width-12">
                 <?php require 'php/inc/flash_message.php'; ?>
             </div>
             <div class="width-12 welcome">

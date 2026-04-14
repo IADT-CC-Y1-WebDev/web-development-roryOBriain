@@ -215,6 +215,13 @@ body {
 	justify-content:space-between
 }
 
+.flash-message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border: 1px solid;
+}
+
 .flash-message.success {
     background-color: #d4edda;
     border-color: #c3e6cb;
