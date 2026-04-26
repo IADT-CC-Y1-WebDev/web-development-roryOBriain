@@ -21,7 +21,7 @@ let formatIdsErrors = document.getElementById('format_error');
 let coverFilenameError = document.getElementById('cover_filename_error');
 let errors = {};
 
-// submitBtn.addEventListener('click', onSubmitForm);
+submitBtn.addEventListener('click', onSubmitForm);
 
 function addError(fieldName, message) {
     errors[fieldName] = message;
